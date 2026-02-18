@@ -42,7 +42,7 @@ export function CarouselBackground() {
   if (!isMounted) {
     return (
       <div
-        className="fixed inset-0 -z-10 bg-cover bg-center transition-all duration-1000 ease-in-out"
+        className="fixed inset-0 -z-10 bg-cover bg-center transition-all duration-[2000ms] ease-in-out"
         style={{
           backgroundImage: `url('${images[0].src}')`,
         }}
@@ -56,7 +56,7 @@ export function CarouselBackground() {
       {images.map((image, index) => (
         <div
           key={index}
-          className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ease-in-out"
+          className="absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out"
           style={{
             backgroundImage: `url('${image.src}')`,
             opacity: index === currentIndex ? 1 : 0,
