@@ -10,7 +10,8 @@ export function HeroSection() {
   const heroRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    setIsVisible(true)
+    const timer = setTimeout(() => setIsVisible(true), 0)
+    return () => clearTimeout(timer)
   }, [])
 
   useEffect(() => {

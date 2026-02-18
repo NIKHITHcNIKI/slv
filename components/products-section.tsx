@@ -78,7 +78,7 @@ export function ProductsSection() {
               className={`group bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/30 transition-all duration-300 ${
                 isInView ? "animate-slide-up" : "opacity-0"
               }`}
-              style={{ animationDelay: `${index * 0.1}s` }}
+              style={{ animationDelay: isInView ? `${index * 0.1}s` : "0s" }}
             >
               {/* Product Image */}
               <div className="relative overflow-hidden">
@@ -137,7 +137,7 @@ export function ProductsSection() {
                 className={`group p-6 bg-muted/30 rounded-xl text-center border border-border/50 hover:border-primary/30 transition-all duration-300 ${
                   isInView ? "animate-scale-in" : "opacity-0"
                 }`}
-                style={{ animationDelay: `${(index + 3) * 0.1}s` }}
+                style={{ animationDelay: isInView ? `${(index + 3) * 0.1}s` : "0s" }}
               >
                 <div className="w-12 h-12 mx-auto mb-4 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <service.icon className="w-6 h-6 text-primary" />
