@@ -17,8 +17,15 @@ export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isMounted) return
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
 
@@ -33,7 +40,7 @@ export function Navbar() {
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [isMounted])
 
   return (
     <nav
@@ -87,7 +94,7 @@ export function Navbar() {
                 className={`block py-3 text-sm font-medium tracking-wide uppercase transition-all duration-300 animate-slide-up ${
                   activeSection === link.href.substring(1) ? "text-primary" : "text-muted-foreground hover:text-primary"
                 }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ animationDelay: isMounted ? `${index * 0.1}s` : "0s" }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}

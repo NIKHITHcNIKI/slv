@@ -104,7 +104,7 @@ export function HeroSection() {
                 <div
                   key={stat.label}
                   className={`${isVisible ? "animate-slide-up" : "opacity-0"}`}
-                  style={{ animationDelay: `${(index + 3) * 0.2}s` }}
+                  style={{ animationDelay: isVisible ? `${(index + 3) * 0.2}s` : "0s" }}
                 >
                   <div className="text-3xl sm:text-4xl font-bold text-primary">{stat.value}</div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
@@ -121,6 +121,7 @@ export function HeroSection() {
                   src="/industrial-diesel-generator-engine-mechanical-part.jpg"
                   alt="Mahindra Powerol Industrial Diesel Generator"
                   className="w-full h-auto"
+                  loading="eager"
                 />
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
