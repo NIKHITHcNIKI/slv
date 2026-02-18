@@ -11,7 +11,9 @@ export function Logo({ className = "", showText = true }: { className?: string; 
           alt="SLV Diesel Power System Logo"
           width={showText ? 50 : 60}
           height={showText ? 50 : 60}
-          className="object-contain drop-shadow-[0_0_15px_rgba(234,88,12,0.3)] group-hover:drop-shadow-[0_0_25px_rgba(234,88,12,0.5)] transition-all duration-500 rounded-3xl opacity-90 border-0 text-card bg-popover border-transparent border-solid px-0 mx-px my-0 py-0 leading-4 tracking-normal text-base"
+          loading="eager"
+          priority
+          className="object-contain drop-shadow-[0_0_15px_rgba(234,88,12,0.3)] group-hover:drop-shadow-[0_0_25px_rgba(234,88,12,0.5)] transition-all duration-500 rounded-3xl opacity-90 border-0 text-card bg-popover border-transparent border-solid px-0 mx-px my-0 py-0 leading-4 tracking-normal text-base w-auto h-auto"
         />
       </div>
       {showText && (
