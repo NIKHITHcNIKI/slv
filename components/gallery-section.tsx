@@ -58,6 +58,7 @@ export function GallerySection() {
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  style={{ width: 'auto', height: 'auto' }}
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />

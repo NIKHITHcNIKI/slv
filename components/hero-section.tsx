@@ -5,13 +5,9 @@ import { ArrowRight, Phone, Shield, Clock, Award, Cog } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function HeroSection() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const heroRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
