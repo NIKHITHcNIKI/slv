@@ -39,19 +39,8 @@ export function CarouselBackground() {
     return () => clearInterval(interval)
   }, [isMounted])
 
-  if (!isMounted) {
-    return (
-      <div
-        className="fixed inset-0 -z-10 bg-cover bg-center transition-all duration-[2000ms] ease-in-out"
-        style={{
-          backgroundImage: `url('${images[0].src}')`,
-        }}
-      />
-    )
-  }
-
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden">
+    <div className="fixed inset-0 -z-10 overflow-hidden bg-black">
       {/* Background images with smooth transitions */}
       {images.map((image, index) => (
         <div
@@ -59,28 +48,32 @@ export function CarouselBackground() {
           className="absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out"
           style={{
             backgroundImage: `url('${image.src}')`,
-            opacity: index === currentIndex ? 1 : 0,
-            zIndex: index === currentIndex ? 10 : 0,
+            opacity: !isMounted ? (index === 0 ? 1 : 0) : (index === currentIndex ? 1 : 0),
+            zIndex: 0,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         />
       ))}
 
       {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/40 z-20" />
+      <div className="absolute inset-0 bg-black/30 z-10" />
 
       {/* Carousel indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-30">
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              index === currentIndex ? 'w-8 bg-primary' : 'w-2 bg-white/50 hover:bg-white/75'
-            }`}
-            aria-label={`Go to image ${index + 1}`}
-          />
-        ))}
-      </div>
+      {isMounted && (
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentIndex(index)}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                index === currentIndex ? 'w-8 bg-primary' : 'w-2 bg-white/50 hover:bg-white/75'
+              }`}
+              aria-label={`Go to image ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
