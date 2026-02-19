@@ -48,7 +48,7 @@ export function CarouselBackground() {
           className="absolute inset-0 bg-cover bg-center transition-opacity duration-[2000ms] ease-in-out"
           style={{
             backgroundImage: `url('${image.src}')`,
-            opacity: !isMounted ? (index === 0 ? 1 : 0) : (index === currentIndex ? 1 : 0),
+            opacity: index === currentIndex ? 1 : 0,
             zIndex: 0,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
